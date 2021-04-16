@@ -18,8 +18,6 @@ int main(int argc, char** argv) {
     printf("Please enter an integer number:\n");
     fgets(buffer, sizeof(buffer),stdin);
     sscanf(buffer, "%d", &x);
-    printf("___\n");
-
     assFunc(x);
     return 0;
 }

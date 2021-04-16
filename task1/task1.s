@@ -15,8 +15,7 @@ assFunc:
     call c_checkValidity
     add esp,4
     mov ecx, dword [ebp+8]
-    mov edx, eax
-    cmp edx, 1
+    cmp eax, 1
     jne odd
     even:
     shl ecx, 2
