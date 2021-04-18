@@ -20,34 +20,33 @@ convertor:
 	mov ecx, dword [ebp+8]	; get function argument (pointer to string)
 	mov eax,0
 	findNum:
-	push dword [ecx]
-	cmp byte [ecx],'A'
-	jb dig
-	sub byte [ecx],'A'
-	add byte [ecx],10
+	mov ebx,[ecx]
+	cmp ebx,65
+	jnae dig
+	sub ebx,65
+	add ebx,10
 	jmp convert
 	dig:
-	sub byte [ecx],'0'
+	sub ebx,48
 	convert:
 	mov edx, 8
 	
 	start: 
-	mov dword ebx, [ecx]
+	push ebx
 	and ebx, edx
-	cmp ebx,0
-	jnz one
 	mov byte [an+eax], "0"
-	jmp cont
-	one:
+	cmp ebx,0
+	je cont
 	mov byte [an+eax], "1"
 	cont:
 	inc eax
 	shr edx,1
 	cmp edx, 1
+	pop ebx
 	jnz start
-	pop dword [ecx]
+	
 	inc ecx
-	cmp byte [ecx], 0
+	cmp byte [ecx], 10
 	jnz findNum
 	;mov byte [an], 0
 	push an				; call printf with 2 arguments -  
