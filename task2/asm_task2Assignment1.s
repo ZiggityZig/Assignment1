@@ -30,6 +30,7 @@ convertor:
 	sub byte [ecx],'0'
 	convert:
 	mov edx, 8
+	
 	start: 
 	mov dword ebx, [ecx]
 	and ebx, edx
