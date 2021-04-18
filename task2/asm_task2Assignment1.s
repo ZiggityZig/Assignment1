@@ -27,11 +27,11 @@ convertor:
 	add byte [ecx],10
 	jmp convert
 	dig:
-	sub byte [num],"0"
+	sub byte [ecx],'0'
 	convert:
 	mov edx, 8
 	start: 
-	mov dword ebx, [num]
+	mov dword ebx, [ecx]
 	and ebx, edx
 	cmp ebx,0
 	jnz one
@@ -44,6 +44,7 @@ convertor:
 	shr edx,1
 	cmp edx, 1
 	jnz start
+	pop dword [ecx]
 	inc ecx
 	cmp byte [ecx], 0
 	jnz findNum
