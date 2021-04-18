@@ -9,7 +9,7 @@ int main(int argc, char **argv)
   while (1)
   {
     fgets(buf, MAX_LEN, stdin); /* get user input string */
-    if(strncmp(buf, "q") == 0){
+    if(strncmp(buf, "q\n") == 0){
       printf("Closing program\n");
       exit(0);
     }

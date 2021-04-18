@@ -20,7 +20,7 @@ convertor:
 	mov ecx, dword [ebp+8]	; get function argument (pointer to string)
 	push an
 	findNum:
-		movzx [num],ecx
+		mov [num], ecx
 		cmp byte [num],'A'
 		jb dig
 		sub byte [num],'A'
@@ -40,7 +40,7 @@ convertor:
 		one:
 		mov byte [an], '1'
 		cont:
-		inc an
+		inc byte [an]
 		shr edx,1
 		cmp edx, 1
 		jnz loop
@@ -48,8 +48,8 @@ convertor:
 	cmp byte [ecx], 0
 	jnz findNum
 	mov byte [an], 0
-	pop an
-	push an			; call printf with 2 arguments -  
+	pop dword [an]
+	push an				; call printf with 2 arguments -  
 	push format_string	; pointer to str and pointer to format string
 	call printf
 	add esp, 8		; clean up stack after call
