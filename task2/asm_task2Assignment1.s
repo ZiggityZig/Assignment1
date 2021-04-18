@@ -22,7 +22,7 @@ convertor:
 	findNum:
 	mov ebx,[ecx]
 	cmp ebx,65
-	jnae dig
+	jb dig
 	sub ebx,65
 	add ebx,10
 	jmp convert
@@ -34,10 +34,10 @@ convertor:
 	start: 
 	push ebx
 	and ebx, edx
-	mov byte [an+eax], "0"
-	cmp ebx,0
+	mov byte [an+eax],'0'
+	cmp bl,0
 	je cont
-	mov byte [an+eax], "1"
+	mov byte [an+eax], '1'
 	cont:
 	inc eax
 	shr edx,1
@@ -46,9 +46,9 @@ convertor:
 	jnz start
 	
 	inc ecx
-	cmp byte [ecx], 10
+	cmp byte [ecx], 0
 	jnz findNum
-	;mov byte [an], 0
+	mov byte [an+eax+1], 0
 	push an				; call printf with 2 arguments -  
 	push format_string	; pointer to str and pointer to format string
 	call printf
