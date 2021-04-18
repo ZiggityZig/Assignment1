@@ -15,8 +15,18 @@ task1:	$(OBJ_DIR)/main1.o $(OBJ_DIR)/task1.o
 	$(CC) -o $(BIN_DIR)/task1.bin $(OBJ_DIR)/main1.o $(OBJ_DIR)/task1.o
 
 # task2:
-# add your makefile code here...
-# uncomment task2 in section 'all'
+	task2.out: asm_task2Assignment1.s
+	ASM ASM_FLAGS asm_task2Assignment1.s -o asm_task2Assignment1.o
+	CC CC_FLAGS main_task2Assignment1.c main_task2Assignment1.o -o task2.out
+	rm -f task1.o
+
+
+
+.PHONY: clean
+
+clean:
+	rm -f task1.out
+
 
 # .c/.s compile rules
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
@@ -27,3 +37,6 @@ $(OBJ_DIR)/%.o : $(SRC_DIR)/%.s
 
 clean:
 	rm $(BIN_DIR)/*.bin $(OBJ_DIR)/*.o $(LIST_DIR)/*.lst
+
+
+
