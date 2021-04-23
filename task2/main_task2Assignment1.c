@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #define MAX_LEN 34 /* maximal input string size */
                    /* enough to get 32-bit string + '\n' + null terminator */
 extern int convertor(char *buf);
